@@ -13,7 +13,7 @@ import java.util.NoSuchElementException;
 @RestController
 @RequestMapping("/api")
 public class StudentController {
-    
+
     private static final List<Student> students = Arrays.asList(
             new Student(1L, "Megatron", "NLN", "megatron@email.com"),
             new Student(2L, "Optimus", "Prime", "optimusprime@email.com"),
