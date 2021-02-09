@@ -9,7 +9,8 @@ import static com.spring.boot.basicauth.model.ApplicationUserPermission.*;
 public enum ApplicationUserRole {
 
     ADMIN(Sets.newHashSet(COURSE_READ, COURSE_WRITE, STUDENT_READ, STUDENT_WRITE)),
-    STUDENT(Sets.newHashSet());
+    STUDENT(Sets.newHashSet()),
+    ADMININTERN(Sets.newHashSet(COURSE_READ, STUDENT_READ)),;
 
     private final Set<ApplicationUserPermission> permission;
 
