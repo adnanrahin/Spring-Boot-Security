@@ -50,7 +50,7 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
 
         UserDetails lindaUser = User.builder()
                 .username("admin")
-                .password(passwordEncoder.encode("12345"))
+                .password(passwordEncoder.encode("admin"))
                 .authorities(ADMIN.getGrantedAuthorities())
                 .build();
 
