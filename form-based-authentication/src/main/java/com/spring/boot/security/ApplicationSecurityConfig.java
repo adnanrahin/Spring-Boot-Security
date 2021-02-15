@@ -12,6 +12,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 
+import java.util.concurrent.TimeUnit;
+
 import static com.spring.boot.model.ApplicationUserRole.*;
 
 @Configuration
@@ -36,7 +38,10 @@ public class ApplicationSecurityConfig extends WebSecurityConfigurerAdapter {
                 .authenticated()
                 .and()
                 .formLogin().loginPage("/login").permitAll()
-        .defaultSuccessUrl("/courses", true);
+                .defaultSuccessUrl("/courses", true)
+                .and().rememberMe().tokenValiditySeconds((int) TimeUnit.MINUTES.toSeconds(5)).key("secured").
+                and().logout().logoutUrl("/logout").clearAuthentication(true)
+                .invalidateHttpSession(true).deleteCookies("remember-me", "JSESSIONID").logoutSuccessUrl("/login");
     }
 
     @Override
