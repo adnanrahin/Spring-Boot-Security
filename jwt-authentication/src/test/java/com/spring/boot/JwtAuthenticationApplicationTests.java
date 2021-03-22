@@ -1,4 +1,4 @@
-package com.spring.boot.jwt;
+package com.spring.boot;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
