@@ -1,4 +1,4 @@
-package com.spring.boot.auth;
+package com.example.demo.auth;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -10,17 +10,19 @@ import org.springframework.stereotype.Service;
 @Service
 public class ApplicationUserService implements UserDetailsService {
 
-    private final ApplicationUserDAO applicationUserDAO;
+    private final ApplicationUserDao applicationUserDao;
 
     @Autowired
-    public ApplicationUserService(@Qualifier("fake") ApplicationUserDAO applicationUserDAO) {
-        this.applicationUserDAO = applicationUserDAO;
+    public ApplicationUserService(@Qualifier("fake") ApplicationUserDao applicationUserDao) {
+        this.applicationUserDao = applicationUserDao;
     }
 
     @Override
-    public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
-        return applicationUserDAO.selectApplicationUserByUserName(s)
+    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        return applicationUserDao
+                .selectApplicationUserByUsername(username)
                 .orElseThrow(() ->
-                        new UsernameNotFoundException(String.format("Username %s not found", s)));
+                        new UsernameNotFoundException(String.format("Username %s not found", username))
+                );
     }
 }

@@ -1,4 +1,4 @@
-package com.spring.boot.auth;
+package com.example.demo.auth;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -8,7 +8,7 @@ import java.util.Set;
 
 public class ApplicationUser implements UserDetails {
 
-    private final String userName;
+    private final String username;
     private final String password;
     private final Set<? extends GrantedAuthority> grantedAuthorities;
     private final boolean isAccountNonExpired;
@@ -16,13 +16,14 @@ public class ApplicationUser implements UserDetails {
     private final boolean isCredentialsNonExpired;
     private final boolean isEnabled;
 
-    public ApplicationUser(String userName, String password,
+    public ApplicationUser(String username,
+                           String password,
                            Set<? extends GrantedAuthority> grantedAuthorities,
                            boolean isAccountNonExpired,
                            boolean isAccountNonLocked,
                            boolean isCredentialsNonExpired,
                            boolean isEnabled) {
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.grantedAuthorities = grantedAuthorities;
         this.isAccountNonExpired = isAccountNonExpired;
@@ -43,7 +44,7 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public String getUsername() {
-        return userName;
+        return username;
     }
 
     @Override
